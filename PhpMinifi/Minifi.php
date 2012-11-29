@@ -189,8 +189,10 @@ class Minifi
 
 		foreach ($paths as $path)
 		{
+			$path = realpath($path);
+
 			// file
-			if (is_readable($path))
+			if (is_file($path))
 			{
 				$this->addFile($path, $phpdocs);
 			}
@@ -201,13 +203,17 @@ class Minifi
 				$directory = dir($path);
 				while (($entry = $directory->read()) !== FALSE)
 				{
+					if (in_array($entry, array('.', '..')))
+					{
+						continue;
+					}
 					$this->add($path . DIRECTORY_SEPARATOR . $entry, $phpdocs);
 				}
 				$directory->close();
 			}
 			else
 			{
-				throw new ErrorException("Input path '{$paths}' is not readable file or directory.");
+				throw new ErrorException("Input path '{$paths}' is not file or directory.");
 			}
 		}
 	}
