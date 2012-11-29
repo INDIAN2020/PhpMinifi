@@ -121,7 +121,9 @@ class Minifi
 	 */
 	public function setHeader($header)
 	{
-		if ((substr($header, 0, 3) !== '/**') || (substr($header, 0, 2) !== '/*'))
+		$header = trim($header);
+
+		if ((substr($header, 0, 3) !== '/**') && (substr($header, 0, 2) !== '/*'))
 		{
 			$header = '/** ' . $header;
 		}
