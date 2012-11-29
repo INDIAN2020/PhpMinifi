@@ -1,0 +1,14 @@
+<phpunit backupGlobals="false"
+	backupStaticAttributes="false"
+	convertErrorsToExceptions="true"
+	convertNoticesToExceptions="true"
+	convertWarningsToExceptions="true"
+	forceCoversAnnotation="true"
+	verbose="true"
+>
+	<testsuites>
+		<testsuite name="PhpMinifi test suit">
+			<directory>./Minifi</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>
