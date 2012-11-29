@@ -327,7 +327,8 @@ class Minifi
 	 */
 	private function minifiPhpdocs($phpdocs)
 	{
-		$phpdocs = str_replace(PHP_OS == 'Linux' ? "\n" : "\r\n", ' ', $phpdocs);
+		$phpdocs = str_replace("\r\n", ' ', $phpdocs);
+		$phpdocs = str_replace("\n", ' ', $phpdocs);
 		$phpdocs = str_replace("\t", ' ', $phpdocs);
 		return preg_replace('/ +/', ' ', $phpdocs);
 	}
