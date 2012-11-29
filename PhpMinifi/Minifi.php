@@ -64,17 +64,17 @@ class Minifi
 	/**
 	 * Flag for include PHPDocs into minifi version
 	 */
-	const PHPDOCS_INCLUDE = TRUE;
+	const PHPDOCS_INCLUDE = 'phpdocs_include';
 
 	/**
 	 * Flag for not include PHPDocs into minifi version
 	 */
-	const PHPDOCS_REMOVE = FALSE;
+	const PHPDOCS_REMOVE = 'phpdocs_remove';
 
 	/**
 	 * Flag for setting of including PHPDocs into minifi version by default flag
 	 */
-	const PHPDOCS_DEFAULT = NULL;
+	const PHPDOCS_DEFAULT = 'phpdocs_default';
 
 	/**
 	 * Prefix for substitution for PHPDocs
@@ -160,7 +160,7 @@ class Minifi
 	 */
 	public function setDefaultPhpdocs($phpdocs)
 	{
-		if (!in_array($phpdocs, array(self::PHPDOCS_INCLUDE, self::PHPDOCS_REMOVE)))
+		if ($phpdocs !== self::PHPDOCS_INCLUDE && $phpdocs !== self::PHPDOCS_REMOVE)
 		{
 			throw new ErrorException('Invalid value for default setting of including PHPDocs into minifi version.');
 		}
